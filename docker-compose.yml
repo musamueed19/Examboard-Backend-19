@@ -1,0 +1,16 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .  # Path to the Dockerfile
+    volumes:
+      - .:/app  # Mounts the current directory to /app in the container
+      - /app/node_modules  # Prevents overwriting node_modules inside container
+    ports:
+      - "3000:3000"  # Maps local port 3000 to container port 3000
+    environment:
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: umer123
+      DB_DATABASE: examboard
